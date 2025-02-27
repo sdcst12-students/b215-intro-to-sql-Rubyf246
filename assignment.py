@@ -63,8 +63,8 @@ def insert_record():
     date = input("Enter date of first visit (YYYY-MM-DD): ")
     
     cursor.execute('''
-        INSERT INTO pets (cumid, petname, petspecies, petbreed, ownername, phoneNumber, email, balance, date)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+        INSERT INTO veterinary (cumid, petname, petspecies, petbreed, ownername, phoneNumber, email, balance, date)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
     ''', (cumid, petname, petspecies, petbreed, ownername, phoneNumber, email, balance, date))
 connection.commit()
 
@@ -91,12 +91,12 @@ def retrieve_by_id():
 def retrieve_by_email():
     owner_email = input("Enter owner's email address: ")
     cursor.execute('''
-        SELECT * FROM pets WHERE email = ?
+        SELECT * FROM veterinary WHERE email = ?
     ''', (owner_email,))
     record = cursor.fetchone()
     if record:
         print("Record found:")
-        print(f"ID: {record[0]}")
+        print(f"Cusutomers ID: {record[0]}")
         print(f"Pet Name: {record[1]}")
         print(f"Species: {record[2]}")
         print(f"Breed: {record[3]}")
@@ -111,12 +111,12 @@ def retrieve_by_email():
 def retrieve_by_phone():
     owner_phone = input("Enter owner's phone number: ")
     cursor.execute('''
-        SELECT * FROM pets WHERE phoneNumber = ?
+        SELECT * FROM veterinary WHERE phoneNumber = ?
     ''', (owner_phone,))
     record = cursor.fetchone()
     if record:
         print("Record found:")
-        print(f"ID: {record[0]}")
+        print(f"Cusutomers ID: {record[0]}")
         print(f"Pet Name: {record[1]}")
         print(f"Species: {record[2]}")
         print(f"Breed: {record[3]}")
